@@ -1,0 +1,10 @@
+.cardContainer{
+    border: 2px solid lightsalmon;
+    border-radius: 3px;
+    margin: 3px;
+}
+.deleteBtn{
+    position: absolute;
+    right: 10px;
+    top: 0;
+}
