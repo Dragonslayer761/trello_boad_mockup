@@ -1,0 +1,33 @@
+.ListClass{
+    width: 300px;
+    flex: 0 0 auto;
+    background-color: lightgray;
+    border: 1px solid green;
+    border-radius: 4px;
+    margin: 0 10px 10px 0;
+    overflow-y:auto;
+}
+.listTitle{
+    border: 2px solid rebeccapurple;
+}
+.cardList{
+    height: 73vh;
+    scrollbar-width: none;
+    overflow-y: auto;
+}
+.addCardBtn{
+
+    background-color: green;
+    border-radius: 40px;
+}
+.addCardContainer{
+    position: sticky;
+    padding: 5px;
+}
+.listDeleteBtn{
+    position: relative;
+    left: 100px;
+    top: -2px;
+    font-size: 20px;
+    text-decoration: none;
+}
