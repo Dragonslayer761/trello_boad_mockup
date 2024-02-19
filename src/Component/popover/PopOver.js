@@ -7,9 +7,11 @@ function PopOver(props) {
     const [listTitle,setListTitle] = useState("");
     
     const handleTitlechange = (event) =>{
+      if(event.target.value !== "")
         setListTitle(event.target.value)
     }
     const handleDone = (event) =>{
+      event.preventDefault();
         let title = listTitle;
         setListTitle("")
         done(title,event.target)

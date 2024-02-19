@@ -5,6 +5,7 @@ import ListComponent from '../list-component/ListComponent';
 import PopOver from '../popover/PopOver';
 import './AppContainer.css'
 import {useLocalStorage} from '../localStorageHook'
+import { v4 as uuid } from 'uuid';
 
 
 
@@ -21,7 +22,7 @@ const AppContainer=()=> {
     const handleListdata = (title,target) =>{
         setCount(count+1)
         let list = {
-            id:count,
+            id: uuid(),
             title:title,
             cardList:[]
         }
@@ -36,7 +37,11 @@ const AppContainer=()=> {
     }
     const handleCardlist =(cardList,id) =>{
        let listarr = [...listState]
-       listarr[id].cardList=[...cardList]
+       listarr.forEach((listItem) =>{
+        if(listItem.id === id){
+            listItem.cardList = [...cardList];
+        }
+       });
        setListState(listarr)
     }
     useEffect(() => {

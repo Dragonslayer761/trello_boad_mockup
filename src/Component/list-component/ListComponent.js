@@ -23,7 +23,7 @@ function ListComponent(props) {
         let card = {
             id:count,
             title: title,
-            content: "CardContent"
+            content: ""
         }
         cardList.push(card)
         count = cardList.length
@@ -47,16 +47,18 @@ function ListComponent(props) {
         changeCardlist(cardList,list.id)
     }
    const onDragOver =(event) =>{
-       event.preventdefault()
+       event.preventDefault()
    }
    const onDrop=(e)=>{
-    
+    let newCardData = JSON.parse(e.dataTransfer.getData("card"));
+    handleCardData(newCardData.title)
+    console.log(list)
    }
     return (
-        <Col className="ListClass" >
+        <Col className="ListClass" onDrop={(e)=>{onDrop(e)}} onDragOver={(e)=>{onDragOver(e)}}>
             <div className="listTitle">
                 <span>{list.title}</span>
-                <a className="listDeleteBtn" onClick={handledelte} href="/#">x</a>
+                <a className="listDeleteBtn" onClick={handledelte} >x</a>
             </div>
             <div className="cardList">
                 {[...Array(count)].map((_, i) => <CardComponent  key={i} card={cardList[i]} deleteCard ={deleteCard} changeContent={changeContent}></CardComponent>)}

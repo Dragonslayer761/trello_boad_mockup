@@ -13,20 +13,28 @@ function CardComponent(props) {
     const toggleContent =()=>{
         setContent(content => !content)
     }
+    const removeCardonDrag = (e,id) => {
+        e.preventDefault();
+        deleteCard(id)
+        //changeContent("",cardDetails.id);
+    }
     const addContent =(event)=>{
         console.log(event.target.value)
         changeContent(event.target.value,card.id)
     }
-    const onDragStart=(e,id)=>{
-        e.dataTransfer.setData("id",id)
+    const onDragStart=(e,card)=>{
+        e.dataTransfer.clearData();
+        console.log(card)
+        let strCard = JSON.stringify(card);
+        e.dataTransfer.setData("card",strCard)
     }
     return (
         <div className="cardContainer" >
-            <Card >
+            <Card draggable  onDragStart={(e) => {onDragStart(e,card)}} onDragEnd={(e)=>removeCardonDrag(e,card.id)}>
                 <Card.Body>
                     <Card.Title>
                         <span>{card.title}</span>
-                        <a className="deleteBtn" href="/#" onClick={handleDelete} >x</a>
+                        <a className="deleteBtn"  onClick={handleDelete} >x</a>
                     </Card.Title>
                     <Card.Text >
                         {card.content } 
